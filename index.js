@@ -22,9 +22,7 @@ app.use(session({secret:'MySecret', resave: false, saveUninitialized:true}));
 
 const port = 4036;
 
-app.listen(port, () => {
-    console.log("server listening on port", port);
-});
+app.listen(process.env.PORT || 4036);
 
 app.use('/user', userRouter);
 app.use('/blog', blogRouter);
