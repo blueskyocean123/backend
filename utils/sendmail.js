@@ -43,7 +43,6 @@ const sendMail = {
             if (error) {
                 console.log(error);
             }
-            //console.log("Finish sending email : " + info.response);
             transporter.close();
         });
     }

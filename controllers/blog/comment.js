@@ -17,7 +17,6 @@ const commentCtrl = {
             .then((foundComment) => {
                 originLft = foundComment.lft;
                 originDep = foundComment.depth;
-                console.log(originLft);
             })
             .catch((err) => {
                 console.log('It is failed to create comment : ', err);
@@ -40,9 +39,8 @@ const commentCtrl = {
                         id: eachComment.id
                     }
                 })
-                .then((updatedComment) => {
-                    console.log('Your rgt is updated successfully!');
-                })
+                .then((updatedComment) => { }
+                )
                 .catch((err) => {
                     console.log('update error : ', err);
                 });
@@ -69,9 +67,8 @@ const commentCtrl = {
                         id: eachComment.id
                     }
                 })
-                .then((updatedComment) => {
-                    console.log('Your rgt is updated successfully!');
-                })
+                .then((updatedComment) => { }
+                )
                 .catch((err) => {
                     console.log('update error : ', err);
                 });
@@ -93,7 +90,6 @@ const commentCtrl = {
             res.status(200).send({
                 msg: "success"
             });
-            console.log("Your comment is created successfully!");
         })
         .catch((err) => {
             console.log('create error : ', err);

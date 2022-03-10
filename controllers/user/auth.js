@@ -41,7 +41,6 @@ const authCtrl = {
         });
     },
     signupSendMail : async (req, res) => {
-        console.log('what is this: '+ req.body.email);
         await models.user.findOne({ 
             where: { 
                 email: req.body.email 
@@ -99,9 +98,8 @@ const authCtrl = {
                                 email: foundUser.email 
                             }
                         })
-                        .then((updatedUser) => {
-                            console.log(updatedUser);
-                        })
+                        .then((updatedUser) => { }
+                        )
                         .catch((err) => {
                             console.log('err : ' + err);
                         });

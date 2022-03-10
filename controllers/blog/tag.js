@@ -21,7 +21,6 @@ const topicCtrl = {
                             tag_id: createdTag.id
                         })
                         .then((createdClassify) => {
-                            console.log(createdClassify);
                             result = true;
                         })
                         .catch((err) => {
@@ -47,7 +46,6 @@ const topicCtrl = {
                             tag_id: originId
                         })
                         .then((createdClassify) => {
-                            console.log(createdClassify);
                             result = true;
                         })
                         .catch((err) => {

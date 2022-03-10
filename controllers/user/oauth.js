@@ -9,7 +9,6 @@ const oauthCtrl = {
         const options = oauth.getOption(coperation, code);
         const token = await oauth.getAccessToken(options);
         const newUser = await oauth.getUserInfo(options.userInfoUrl, token.access_token);
-        console.log(newUser);
 
         await models.user.findOne({ 
             where: { 
@@ -49,7 +48,6 @@ const oauthCtrl = {
         const options = oauth.getOption(coperation, code);
         const token = await oauth.getAccessToken(options);
         const newUser = await oauth.getUserInfo(options.userInfoUrl, token.access_token);
-        console.log(newUser); // newUser : ID가 없는 순수 gmail 계정 정보
 
         await models.user.findOne({ 
             where: { 

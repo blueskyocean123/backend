@@ -7,7 +7,7 @@ const router = express.Router();
 // GET http://localhost:4036/user/profile/read/me
 router.get('/read/me', checkCtrl.verifyAcsToken, profileCtrl.readDetails);
 
-// POST http://localhost:4036/api/profile/update
+// POST http://localhost:4036/user/profile/update/me
 router.post('/update/me', checkCtrl.verifyAcsToken, profileCtrl.updateDetails);
 
 module.exports = router;

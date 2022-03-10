@@ -21,8 +21,8 @@ const profileCtrl = {
     updateDetails: async (req, res) => {
         await models.user.update({ 
             name: req.body.name, 
-            nickname: req.body.nickname, 
-            url: req.body.url, 
+            photo: req.body.photo,
+            bio: req.body.bio, 
             email: req.body.email
         }, { 
             where: { 
@@ -30,7 +30,10 @@ const profileCtrl = {
             }
         })
         .then((r) => {
-            res.send('Your update is successfully!');
+            res.status(200).send({
+                ok: true,
+                message: 'Your profile update is successfully!'
+            });
         })
         .catch((err) => {
             console.log(err);
