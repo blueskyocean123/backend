@@ -46,7 +46,7 @@ module.exports = {
           });
         } else {
           res.status(200).send ({
-            msg: "http://localhost:4036/" + req.file.filename
+            msg: "http://3.88.169.40:4036/" + req.file.filename
         });  
         }
       }
