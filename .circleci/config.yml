@@ -1,48 +1,23 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:chakracore-8.11.1
-    working_directory: ~/repo
+     - image: circleci/node:lts
+     - image: circleci/mysql:5.7
+       environment:
+          MYSQL_USER=sammy
+          MYSQL_PASSWORD=Password123#@!
+          MYSQL_ALLOW_EMPTY_PASSWORD=false
+          MYSQL_DATABASE=mydb
+    # github repo에 server 하위 폴더에 서버 코드가 존재 
+    working_directory: ~/project/server     
     steps:
-      - checkout
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run:
-          name: Install dependencies
-          command: npm install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-      - run:
-          name: Running tests
-          command: npm test
-  deploy:
-    docker:
-      - image: circleci/node:chakracore-8.11.1
-    steps:
-      - run:
-          name: AWS EC2 deploy
-          command: |
-            ssh -o StrictHostKeyChecking=no ubuntu@13.236.1.107 \
-            "echo Start deploy && \
-            cd ~/circleci-aws && \
-            git pull && \
-            npm i && \
-            npm run build && \
-            pm2 stop build/server && \
-            pm2 start build/server && \
-            echo Deploy end"
+      # github repo에 존재하는 소스 코드를 /project 하위에 checkout
+      - checkout:
+            path: ~/project
+      - run: npm install  
+      - run: npm test        
 workflows:
-  version: 2
-  build-and-deploy:
+  build_and_test:
     jobs:
       - build
-      - deploy:
-          requires:
-            - build
