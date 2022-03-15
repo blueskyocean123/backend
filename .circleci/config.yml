@@ -1,0 +1,23 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_USER=dbuser
+          MYSQL_PASSWORD=dbpwd
+          MYSQL_ALLOW_EMPTY_PASSWORD=false
+          MYSQL_DATABASE=dbname
+    # github repo에 server 하위 폴더에 서버 코드가 존재 
+    working_directory: ~/project/server     
+    steps:
+      # github repo에 존재하는 소스 코드를 /project 하위에 checkout
+      - checkout:
+        path: ~/project
+      - run: npm install  
+      - run: npm test        
+workflows:
+  build_and_test:
+    jobs:
+      - build
