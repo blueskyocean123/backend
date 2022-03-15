@@ -1,0 +1,10 @@
+language: node_js # 언어는 node_js
+node_js:
+  - "16.13" # node_js에 버전 10.14
+branches:
+  only:
+    - master
+notifications: # 성공 실패 여부 알림 
+  email:
+    recipients:
+      - blueskyocean123@protonmail.com
