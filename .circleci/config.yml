@@ -1,23 +1,32 @@
 version: 2.1
+orbs:
+  node: circleci/node@1.1.6
+  heroku: circleci/heroku@0.0.10
+workflows:
+  heroku_deploy:
+    jobs:
+      - build
+      - heroku/deploy-via-git:  
+          requires:
+            - build
+          filters:
+            branches:
+              only: main
 jobs:
   build:
     docker:
-      - image: circleci/node:lts
-      - image: circleci/mysql:5.7
-        environment:
-          MYSQL_USER=sammy
-          MYSQL_PASSWORD=Password123#@!
-          MYSQL_ALLOW_EMPTY_PASSWORD=false
-          MYSQL_DATABASE=mydb
-    # github repo에 server 하위 폴더에 서버 코드가 존재 
-    working_directory: ~/project/server     
+      - image: circleci/node:10.16.0
     steps:
-      # github repo에 존재하는 소스 코드를 /project 하위에 checkout
-      - checkout:
-            path: ~/project
-      - run: npm install  
-      - run: npm test        
-workflows:
-  build_and_test:
-    jobs:
-      - build
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install dependencies
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Run test
+          command: npm test
