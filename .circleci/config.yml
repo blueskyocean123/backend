@@ -16,7 +16,7 @@ jobs:
       - checkout:
         path: ~/project
       - run: npm install  
-      - run: npm test        
+      - run: npm start       
 workflows:
   build_and_test:
     jobs:
