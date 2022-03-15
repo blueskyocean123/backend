@@ -2,9 +2,9 @@ version: 2.1
 jobs:
   build:
     docker:
-     - image: circleci/node:lts
-     - image: circleci/mysql:5.7
-       environment:
+      - image: circleci/node:lts
+      - image: circleci/mysql:5.7
+        environment:
           MYSQL_USER=sammy
           MYSQL_PASSWORD=Password123#@!
           MYSQL_ALLOW_EMPTY_PASSWORD=false
