@@ -22,3 +22,9 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+
+      - name: Install npm dependencies
+        run: npm install
+
+      - name: Run start
+        run: npm start
