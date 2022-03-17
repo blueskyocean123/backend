@@ -30,4 +30,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.EC2_SSH_KEY }}
           port: "22"
-          script: sh /home/ubuntu/backend/shell.sh
+          script: sh /ubuntu/backend/shell.sh
