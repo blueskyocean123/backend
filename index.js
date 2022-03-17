@@ -15,7 +15,7 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.json());
 app.use(cors());
 
-app.listen(process.env.PORT || 4030);
+app.listen(process.env.PORT || 4036);
 
 app.use('/user', userRouter);
 app.use('/blog', blogRouter);
