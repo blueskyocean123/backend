@@ -18,8 +18,8 @@ const followCtrl = {
     deleteFollow: async (req, res) => {
         await models.follow.destroy({
             where: {
-                sender: req.body.loginUserId,
-                receiver: req.body.blogUserId
+                sender: req.id,
+                receiver: req.body.userId
             }
         })
         .then((deletedFollow) => {
