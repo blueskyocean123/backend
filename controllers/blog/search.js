@@ -62,6 +62,9 @@ const searchCtrl = {
             where: {
                 bio: {
                     [Op.like]: '%' + req.query.keyword + '%'
+                },
+                id: {
+                    [Op.ne]: req.id
                 }
             }
         })
