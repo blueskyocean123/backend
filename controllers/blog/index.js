@@ -59,32 +59,66 @@ const blogCtrl = {
         });
     },
     updateBlog: async (req, res) => {
-        await models.blog.update({
-            topic: req.body.topic,
-            content: req.body.content
-        }, {
+        await models.blog.findOne({
             where: {
                 id: req.body.blogId
             }
         })
-        .then((result) => {
-            res.send('Your blog is updated successfully!');
+        .then(async foundBlog => {
+            if (foundBlog.createdBy == req.id) {
+                await models.blog.update({
+                    topic: req.body.topic,
+                    content: req.body.content
+                }, {
+                    where: {
+                        id: req.body.blogId
+                    }
+                })
+                .then((result) => {
+                    res.status(200).send({
+                        message: 'Your blog is updated successfully!'
+                    });
+                })
+                .catch((err) => {
+                    console.log('update error : ', err);
+                });
+            } else {
+                res.status(204).send({
+                    message: 'no authorized'
+                });
+            }
         })
         .catch((err) => {
-            console.log('update error : ', err);
+            console.log('read error : ', err);
         });
     },
     deleteBlog: async (req, res) => {
-        await models.blog.destroy({
+        await models.blog.findOne({
             where: {
-                id: req.query.blogID
+                id: req.body.blogId
             }
         })
-        .then((result) => {
-            res.send('Your blog is deleted successfully!');
+        .then(async foundBlog => {
+            if (foundBlog.createdBy == req.id) {
+                await models.blog.destroy({
+                    where: {
+                        id: req.body.blogId
+                    }
+                })
+                .then((result) => {
+                    res.send('Your blog is deleted successfully!');
+                })
+                .catch((err) => {
+                    console.log('delete error : ', err);
+                });
+            } else {
+                res.status(204).send({
+                    message: 'no authorized'
+                });
+            }
         })
         .catch((err) => {
-            console.log('delete error : ', err);
+            console.log('read error : ', err);
         });
     },
     getGoodBlogs: async (req, res) => {

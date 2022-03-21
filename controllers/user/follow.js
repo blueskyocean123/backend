@@ -53,7 +53,6 @@ const followCtrl = {
             console.log('create error : ', err);
         });
     },
-    // get the list of users that you follow
     getFollow: async (req, res) => {
         await models.follow.findAll({
             include: [

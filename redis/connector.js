@@ -9,4 +9,4 @@ redisClient.on('connect', function () {
     console.log('redis client connected');
 });
 
-module.exports = redisClient; 
+module.exports = redisClient;

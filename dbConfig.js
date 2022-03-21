@@ -10,8 +10,8 @@ const connection = mysql.createConnection({
     password:conf.password,
     port:conf.port,
     database:conf.database
-}); // DB 커넥션 생성
-connection.connect();   // DB 접속
+}); 
+connection.connect();
 module.exports = connection;
 
 // Execute the following query in MYSQL Workbench

@@ -98,9 +98,8 @@ const authCtrl = {
                                 email: foundUser.email 
                             }
                         })
-                        .then((updatedUser) => { }
-                        )
-                        .catch((err) => {
+                        .then(updatedUser => { })
+                        .catch(err => {
                             console.log('err : ' + err);
                         });
                     }

@@ -18,7 +18,7 @@ const oauthCtrl = {
         .then((foundUser) => {
             if (foundUser) {
                 const accessToken = jwtoken.genAcsToken(foundUser);
-                const refreshToken = jwtoken.genRefToken(foundUser); // 발급한 refresh token을 redis에 key를 user의 id로 하여 저장.
+                const refreshToken = jwtoken.genRefToken(foundUser);
                 res.status(200).send({
                     ok: true,
                     data: {
@@ -57,7 +57,7 @@ const oauthCtrl = {
         .then((foundUser) => {
             var lastUser = null;
             if (foundUser) {
-                lastUser = foundUser; // lastUser : ID를 가진 bloghouse user 정보
+                lastUser = foundUser;
             } else {
                 models.user.create({
                     email: newUser.email, 
@@ -69,7 +69,7 @@ const oauthCtrl = {
                 .then((createdUser) => {
                     lastUser = createdUser;
                     const accessToken = jwtoken.genAcsToken(foundUser);
-                    const refreshToken = jwtoken.genRefToken(foundUser); // 발급한 refresh token을 redis에 key를 user의 id로 하여 저장.
+                    const refreshToken = jwtoken.genRefToken(foundUser);
                     res.status(200).send({
                         ok: true,
                         data: {

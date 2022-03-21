@@ -21,7 +21,7 @@ module.exports = {
                     'content-type':'application/x-www-form-urlencoded;charset=utf-8'
                 },
                 body: qs.stringify({
-                    grant_type: 'authorization_code',//특정 스트링
+                    grant_type: 'authorization_code',
                     client_id: options.clientID,
                     client_secret: options.clientSecret,
                     redirect_uri: options.redirectUri,

@@ -83,7 +83,6 @@ const topicCtrl = {
             console.log(err);
         })
     },
-    // sorting 8 tags according to the column "num"
     sortTag: async (req, res) => {
         await models.tag.findAll({
             attributes: ['name'],

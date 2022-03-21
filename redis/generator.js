@@ -9,7 +9,7 @@ module.exports = {
         };
         return jwt.sign(payload, secret, {
             algorithm: 'HS256',
-            expiresIn: 3
+            expiresIn: '3s'
         });
     },
     genRefToken: (user) => {
@@ -18,7 +18,7 @@ module.exports = {
         };
         const refreshToken = jwt.sign(payload, secret, {
             algorithm: 'HS256',
-            expiresIn: 60 * 60 * 2 
+            expiresIn: '30d'
         });
         redisClient.get(user.id.toString(), (err, data) => {
             if(err) throw err;

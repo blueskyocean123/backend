@@ -22,8 +22,8 @@ router.get('/read', checkCtrl.verifyAcsToken, blogCtrl.readBlog);
 // POST http://localhost:4036/blog/update
 router.post('/update', checkCtrl.verifyAcsToken, blogCtrl.updateBlog);
 
-// DELETE http://localhost:4036/blog/delete
-router.delete('/delete', checkCtrl.verifyAcsToken, blogCtrl.deleteBlog);
+// POST http://localhost:4036/blog/delete
+router.post('/delete', checkCtrl.verifyAcsToken, blogCtrl.deleteBlog);
 
 // GET http://localhost:4036/blog/getGoodBlogs
 router.get('/getGoodBlogs', blogCtrl.getGoodBlogs);
