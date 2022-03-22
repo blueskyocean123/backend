@@ -17,6 +17,6 @@ app.use(cors());
 
 app.listen(process.env.PORT || 4036);
 
-app.use('/user', userRouter);
-app.use('/blog', blogRouter);
-app.use('/image', imageRouter);
+app.use('/api/user', userRouter);
+app.use('/api/blog', blogRouter);
+app.use('/api/image', imageRouter);
