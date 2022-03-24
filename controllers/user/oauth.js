@@ -18,7 +18,7 @@ const oauthCtrl = {
         .then((foundUser) => {
             if (foundUser) {
                 const accessToken = jwtoken.genAcsToken(foundUser);
-                const refreshToken = jwtoken.genRefToken(foundUser);
+                const refreshToken = jwtoken.genRefToken(foundUser); 
                 res.status(200).send({
                     ok: true,
                     data: {
@@ -57,7 +57,7 @@ const oauthCtrl = {
         .then((foundUser) => {
             var lastUser = null;
             if (foundUser) {
-                lastUser = foundUser;
+                lastUser = foundUser; 
             } else {
                 models.user.create({
                     email: newUser.email, 
@@ -69,7 +69,7 @@ const oauthCtrl = {
                 .then((createdUser) => {
                     lastUser = createdUser;
                     const accessToken = jwtoken.genAcsToken(foundUser);
-                    const refreshToken = jwtoken.genRefToken(foundUser);
+                    const refreshToken = jwtoken.genRefToken(foundUser); 
                     res.status(200).send({
                         ok: true,
                         data: {

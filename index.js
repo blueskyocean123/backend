@@ -6,7 +6,6 @@ const bodyparser = require('body-parser');
 
 const userRouter = require('./routers/user');
 const blogRouter = require('./routers/blog');
-const imageRouter = require('./routers/image');
 
 const app = express();
 app.use(express.static('./public/uploads'));
@@ -17,6 +16,5 @@ app.use(cors());
 
 app.listen(process.env.PORT || 4036);
 
-app.use('/api/user', userRouter);
-app.use('/api/blog', blogRouter);
-app.use('/api/image', imageRouter);
+app.use('/user', userRouter);
+app.use('/blog', blogRouter);

@@ -5,7 +5,6 @@ const secret = 'firsttoken';
 const checkCtrl = {
     verifyAcsToken: (req, res, next) => {
         try {
-            // Bearer tokenstring
             var acsToken = null;
             if (req.headers['x-access-token']) {
                 acsToken = req.headers['x-access-token'];
@@ -18,7 +17,6 @@ const checkCtrl = {
             const decoded = jwt.verify(acsToken, secret);
             req.id = decoded.id;    
             req.token = acsToken;
-            // varify blacklisted access token.
             redisClient.get('BL_' + decoded.id.toString(), (err, data) => {
                 if(err) throw err;
                 if(acsToken === data) return res.status(401).json({
@@ -49,7 +47,6 @@ const checkCtrl = {
             const decoded = jwt.verify(refToken, secret);
             req.id = decoded.id;
 
-            // verify if token is in store or not
             redisClient.get(decoded.id.toString(), (err, data) => {
                 if (err) throw err;
                 if (data === null) 

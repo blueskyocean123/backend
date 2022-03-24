@@ -29,7 +29,6 @@ module.exports = {
                 }),
             }).then(res => res.json());
         } catch(e) {
-            // logger.info("error", e);
             console.log('first winston error');
         }
     },    
@@ -43,7 +42,6 @@ module.exports = {
                 }
             }).then(res => res.json());
         }catch(e) {
-            // logger.info("error", e);
             console.log('second error');
         }
     },    
@@ -53,10 +51,8 @@ module.exports = {
                 return new Google(code);
                 break;
             case 'google':
-                // return new Google(code);
                 break;
             case 'naver':
-                // return new Naver(code);
             break;
         }
     }

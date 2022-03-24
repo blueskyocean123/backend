@@ -1,21 +1,21 @@
 {
   "development": {
-    "username": "sammy",
-    "password": "Password123#@!",
+    "username": "root",
+    "password": "password",
     "database": "mydb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "sammy",
-    "password": "Password123#@!",
+    "username": "root",
+    "password": "password",
     "database": "mydb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "production": {
-    "username": "sammy",
-    "password": "Password123#@!",
+    "username": "root",
+    "password": "password",
     "database": "mydb",
     "host": "localhost",
     "dialect": "mysql"

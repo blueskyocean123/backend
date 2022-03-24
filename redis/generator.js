@@ -9,7 +9,7 @@ module.exports = {
         };
         return jwt.sign(payload, secret, {
             algorithm: 'HS256',
-            expiresIn: '1d'
+            expiresIn: '3s'
         });
     },
     genRefToken: (user) => {

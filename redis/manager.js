@@ -9,7 +9,7 @@ module.exports ={
         }
         const newAcsToken = await jwt.sign(payload, secret, {
             algorithm: 'HS256',
-            expiresIn: '1d'
+            expiresIn: 3
         });
         return res.json({
             status: true, 
